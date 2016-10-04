@@ -103,6 +103,18 @@ qemu-system-* is the architecture to use.
 qemu-system-i386 -hda mydrive.qcow2 -m 1024 -soundhw es1370 -cdrom dsl-4.4.10.iso -boot d -machine pc-i440fx-2.4
 ```
 
+### Debian
+
+After some experimentation the qemu I've encountered uses Ctrl+Alt to lock and unlock mouse, and has no menu bar. In this case you can try Ctrl+Alt+Shift+1 and 2 to switch between the virtual screen and the qemu monitor. You can also pass -monitor like: 
+
+```
+qemu-system-**** [...] -monitor unix:/opt/local.ch/sys/kvm/vm/kvmtest-vm-inx01.intra.local.ch/monitor,server,nowait
+```
+
+See http://www.nico.schottelius.org/blog/control-and-shutdown-qemu-kvm-vm-via-unix-socket/
+
+### Fedora
+
 You should then see a window with a menubar. Use the awful default release key Ctrl+Alt+G to unlock your mouse if need be. Under View you can switch between VGA and compatmonitor0 (in my case). The former is the default showing the output of the VM (a now-booting DSL instance). The latter will allow you to talk to the underlying qemu instance. Open up a paint app or something interesting, then go to your destination PC (or open another terminal) and enter the following. The Flags should be identical, except for drives.
 
 ```
